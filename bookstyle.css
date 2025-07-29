@@ -1,0 +1,100 @@
+
+
+body {
+  /* or any other parent wrapper */
+  margin: 0;
+  display: flex;
+  height: 100dvh;
+  perspective: 1500px;
+  font: 16px/1.4 sans-serif;
+  overflow: hidden;
+  background-color: #232425;
+}
+
+.book {
+  --c: 0;
+  display: flex;
+  margin: auto;
+  width: 25vw;
+  /*1* let pointer event go trough pages of lower Z than .book */
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  /* DEMO ONLY: incline on the X axis for pages preview */
+  rotate: 1 0 0 30deg;
+
+  [name^=book] { display: none; }
+  &:has(#c0:checked) { --c:0; }
+  &:has(#c1:checked) { --c:1; }
+  &:has(#c2:checked) { --c:2; }
+  &:has(#c3:checked) { --c:3; }
+  &:has(#c4:checked) { --c:4; }
+  &:has(#c5:checked) { --c:5; }
+  &:has(#c6:checked) { --c:6; }
+  &:has(#c7:checked) { --c:7; }
+  &:has(#c8:checked) { --c:8; }
+  &:has(#c9:checked) { --c:9; }
+  &:has(#c10:checked) { --c:10; }
+  &:has(#c11:checked) { --c:11; }
+  &:has(#c12:checked) { --c:12; }
+  &:has(#c13:checked) { --c:13; }
+  &:has(#c14:checked) { --c:14; }
+
+}
+
+.page {
+  --thickness: 1.5;
+  /* PS: Don't go below thickness 0.4 or the pages might transpare */
+  flex: none;
+  display: flex;
+  width: 100%;
+  /*1* allow pointer events on pages */
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  border: 0px solid #0008;
+  transform-origin: left center;
+  transition:
+    transform 1s,
+    rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ( calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 1px)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+
+.front,
+.back {
+  flex: none;
+  width: 100%;
+
+  backface-visibility: hidden;
+  background-color: #fff;
+  /* Fix backface visibility Firefox: */
+  translate: 1px;
+}
+
+.back {
+  background-image: linear-gradient(to right, #fff 80%, #ddd 100%);
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
+}

@@ -1,0 +1,114 @@
+body {
+  background-image: url('/images/noise1.gif');
+  background-blend-mode:overlay;
+  background-color: rgb(19, 19, 19);
+  
+  
+}
+
+.banner {
+  position: relative;
+  text-align: center;
+  color: rgb(19,19,19);
+  font-size: 8vw;
+  letter-spacing: -0.1vw;
+  white-space:nowrap;
+  font-family:"Rubik Vinyl", system-ui;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.gallery div {
+  width:33%;
+  justify-content:center;
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: auto;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 0;
+  text-align: center;
+}
+
+* { box-sizing: border-box; }
+
+
+
+h1 {
+  color: black;
+  text-align: center;
+}
+p {
+  color: red;
+}
+
+
+
+ /* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 260px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 16px 46px;
+  text-decoration: none;
+  font-size: 30px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  height:auto;
+  width:38vw;
+  padding: 1vw;
+  margin-right: 1vw; 
+  margin-left: 1vw;
+  background-color:rgb(66, 66, 51);
+  position:top;
+  left: 50%;
+  }
+
+
+
+
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
